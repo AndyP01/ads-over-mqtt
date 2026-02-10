@@ -57,3 +57,21 @@ It has the following initial basic format:
   </RemoteConnections>
 </TcConfig>
 ```
+
+The configuration shown above assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
+
+```
+<Address Port=”1883”>127.0.0.1</Address>
+```
+Broker located at 127.0.0.1, i.e. local home address.
+Port 1883 is the default port number for unsecured MQTT communications.
+
+```
+<Topic>VirtualAmsNetwork1</Topic>
+```
+This is the topic used by this MQTT connection to communicate with other clients that share the same topic name. This allows for ‘virtual’ networks to be created within the broker.
+
+Any changes to this file must be activated with restart of the runtime for the changes to come into effect.
+
+Any ADS-over-MQTT client that uses ‘VirtualAmsNetwork1’ as the topic name can form a route to each other.
+
