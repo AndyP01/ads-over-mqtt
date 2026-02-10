@@ -43,6 +43,11 @@ For builds <4026: ***“C:\TwinCAT\”***.
 
 For builds >= 4026: ***“C:\Program Files (x86)\Beckhoff\TwinCAT\”***.
 
+| Build | Path |
+|---|---|
+| <4026 | C:\TwinCAT\ |
+| >=4026 |C:\Program Files (x86)\Beckhoff\TwinCAT\ | 
+
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
 
 It has the following initial basic format:
@@ -85,12 +90,10 @@ Mosquitto uses a configuration file named ***”mosquito.conf”***.
 
 In its most basic form, it has the following format:
 
-```txt
+```ini
 allow_anonymous true
 listener 1883
 ```
-
-<span style="color: red;">EXPAND THIS</span>.
 
 ## Further Configuration
 
@@ -122,7 +125,7 @@ Secure TLS connection can be configured requiring the use of certificates and ke
 
 The first step is to configure the broker to use port 8883, which is the default for secure connections.
 
-```txt
+```ini
 allow_anonymous false
 listener 8883 nt-baa-vm03
 cafile C:\certs\ca.crt
