@@ -89,3 +89,29 @@ In its most basic form, it has the following format:
 allow_anonymous true
 listener 1883
 ```
+
+## Further Configuration
+
+The setup described above allows for an unsecure connection between MQTT clients and the broker.
+
+Further configuration of both TwinCAT and the broker can be made to enable a more secure connection.
+
+The ADS route can be made unidirectional. This may be an important consideration for ‘engineering’ clients, such as using an XAE on a laptop. This allows only ADS commands to be made to a target from XAE but will not allow commands in the reverse direction from the target to XAE.
+
+To enable this, the following edit can be made to the mqtt.xml file:
+
+```
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
+<RemoteConnections>
+   <Mqtt Unidirectional="true">
+   <Address Port="1883">127.0.0.1</Address>
+    <Topic>VirtualAmsNetwork1</Topic>
+    </Mqtt>
+  </RemoteConnections>
+</TcConfig>
+```
+
+Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
+This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
+However, development and support of this plugin has been discontinued, so it is not recommended for future use.
