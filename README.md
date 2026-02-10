@@ -22,3 +22,10 @@ This client connects with the broker on one side and with the ADS router on the 
 This relationship can be seen in the following diagram:
 
 ![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.png)
+
+Any MQTT broker can be used. A typical installation uses [Mosquitto](https://mosquitto.org/)/
+
+The broker can be installed anywhere on a network. This can include via the internet, which allows for a truly distributed solution. If a client can ‘find’ the broker on the network, then it can be used. This is a networking problem to solve, and not a TwinCAT problem.
+
+Once a client can connect with the broker, the target immediately registers itself by publishing and subscribing to defined topics. These are observable via any other ADS-over-MQTT clients that connect to the broker. Routes are then immediately available for selection from with XAE.
+
