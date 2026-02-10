@@ -23,9 +23,23 @@ This relationship can be seen in the following diagram:
 
 ![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.png)
 
-Any MQTT broker can be used. A typical installation uses [Mosquitto](https://mosquitto.org/)/
+Any MQTT broker can be used. A typical installation uses [Mosquitto](https://mosquitto.org/).
 
 The broker can be installed anywhere on a network. This can include via the internet, which allows for a truly distributed solution. If a client can ‘find’ the broker on the network, then it can be used. This is a networking problem to solve, and not a TwinCAT problem.
 
 Once a client can connect with the broker, the target immediately registers itself by publishing and subscribing to defined topics. These are observable via any other ADS-over-MQTT clients that connect to the broker. Routes are then immediately available for selection from with XAE.
 
+From [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17768315019.html&id=8793359276566777531).
+
+## Initial configuration – TwinCAT
+
+An important point to note is that ***any existing ‘regular’ ADS routes to the target that is desired to be connected via MQTT must be deleted first.***
+
+Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”*** directory. The “Routes” directory itself may need to be created manually if it does not already exist.
+
+The ***“%TWINCAT%”*** installation path depends on the build version of TwinCAT being used.
+
+For builds <4026: ***“C:\TwinCAT\”***.
+For builds >= 4026: ***“C:\Program Files (x86)\Beckhoff\TwinCAT\”***.
+
+This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
