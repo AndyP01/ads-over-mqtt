@@ -46,7 +46,10 @@ The ***“%TWINCAT%”*** installation path depends on the build version of Twin
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
 
-It has the following initial basic format, which assumes the broker has been installed locally to the runtime and is being used over an unsecured connection
+It has the following initial basic format, which assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
+
+***mqtt.xml***
+==============
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
