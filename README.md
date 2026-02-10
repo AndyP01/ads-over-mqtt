@@ -21,4 +21,4 @@ This client connects with the broker on one side and with the ADS router on the 
 
 This relationship can be seen in the following diagram:
 
-![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.jpg)
+![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.png)
