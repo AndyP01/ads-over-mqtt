@@ -3,10 +3,10 @@
 ## Step 1 - Create a private certificate key for the root CA.
 openssl genrsa -out ca.key 4096
 
-
 ## Step 2 - Create certificate of the root CA.
+```
 openssl req -new -x509 -noenc -key ca.key -sha256 -days 3650 -out ca.crt
-
+```
 
 ## Step 3 - Add the CA certificate to the trusted root certificates
 
@@ -14,10 +14,14 @@ openssl req -new -x509 -noenc -key ca.key -sha256 -days 3650 -out ca.crt
 # Create certificate and key for the server side.
 
 ## Step 1 - Create a private certificate key for the service 
+```
 openssl genrsa -out mosquitto.key 4096
+```
 
 ## Step 2 - Create a service certificate request
+```
 openssl req -new -key mosquitto.key -out mosquitto.csr
+```
 
 	Country Name : AU
 	State or Province Name : Victoria
@@ -32,7 +36,9 @@ openssl req -new -key mosquitto.key -out mosquitto.csr
 
 
 ## Step 3 - Sign the certificate.
+```
 openssl x509 -req -in mosquitto.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out mosquitto.crt -days 365 -sha256
+```
 	
 ## Step 4 - Deploy the certificate.
 Copied mosquitto.key and mosquitto.crt to C:\Program Files\Mosquitto\certs
@@ -40,10 +46,14 @@ Copied mosquitto.key and mosquitto.crt to C:\Program Files\Mosquitto\certs
 # Create certificate and key for the client side.
 
 ## Step 1 - Create a private certificate key for the client.
+```
 openssl genrsa -out mosquitto_client_AndrewPa.key 4096
+```
 
 ## Step 2 - Create a client certificate request
+```
 openssl req -new -key mosquitto_client_AndrewPa.key -out mosquitto_client_AndrewPa.csr
+```
 
 	Country Name : AU
 	State or Province Name : Victoria
@@ -57,7 +67,9 @@ openssl req -new -key mosquitto_client_AndrewPa.key -out mosquitto_client_Andrew
 	Optional company name : <empty>
 
 ## Step 3 - Sign the certificate.
+```
 openssl x509 -req -in mosquitto_client_AndrewPa.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out mosquitto_client_AndrewPa.crt -days 365 -sha256
+```
 
 ## Step 4 - Deploy the certificate.
 Copied to directory on client side and pointed MQTTX to look at them.
