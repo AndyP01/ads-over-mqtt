@@ -46,7 +46,7 @@ The ***“%TWINCAT%”*** installation path depends on the build version of Twin
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
 
-It has the following initial basic format:
+It has the following initial basic format, which assumes the broker has been installed locally to the runtime and is being used over an unsecured connection
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
@@ -59,18 +59,16 @@ It has the following initial basic format:
 </TcConfig>
 ```
 
-The configuration shown above assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
-
+Broker located at 127.0.0.1, i.e. local home address.
+Port 1883 is the default port number for unsecured MQTT communications.
 ```xml
 <Address Port=”1883”>127.0.0.1</Address>
 ```
-Broker located at 127.0.0.1, i.e. local home address.
-Port 1883 is the default port number for unsecured MQTT communications.
 
+This is the topic used by this MQTT connection to communicate with other clients that share the same topic name. This allows for ‘virtual’ networks to be created within the broker.
 ```xml
 <Topic>VirtualAmsNetwork1</Topic>
 ```
-This is the topic used by this MQTT connection to communicate with other clients that share the same topic name. This allows for ‘virtual’ networks to be created within the broker.
 
 Any changes to this file must be activated with restart of the runtime for the changes to come into effect.
 
