@@ -48,7 +48,7 @@ This file can have any name but must have an .xml extension. A suggested filenam
 
 It has the following initial basic format, which assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
 
-***mqtt.xml***
+### mqtt.xml
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
@@ -86,7 +86,7 @@ Mosquitto uses a configuration file named ***”mosquito.conf”***.
 
 In its most basic form, it has the following format:
 
-***mosquitto.conf***
+### mosquitto.conf
 ```ini
 allow_anonymous true
 listener 1883
@@ -102,7 +102,7 @@ The ADS route can be made unidirectional. This may be an important consideration
 
 To enable this, the following edit can be made to the mqtt.xml file:
 
-***mqtt.xml***
+### mqtt.xml
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
@@ -123,7 +123,7 @@ Secure TLS connection can be configured requiring the use of certificates and ke
 
 The first step is to configure the broker to use port 8883, which is the default for secure connections.
 
-mosquitto.conf***
+### mosquitto.conf
 ```ini
 allow_anonymous false
 listener 8883 nt-baa-vm03
