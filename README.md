@@ -102,12 +102,16 @@ The ADS route can be made unidirectional. This may be an important consideration
 
 To enable this, the 'Unidirectional' attribute can be added to the mqtt.xml file:
 
+```xml
+<Mqtt Unidirectional="true">
+```
+
 ### mqtt.xml
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
 <RemoteConnections>
-   <Mqtt ***Unidirectional="true"***>
+   <Mqtt Unidirectional="true">
    <Address Port="1883">127.0.0.1</Address>
     <Topic>VirtualAmsNetwork1</Topic>
     </Mqtt>
