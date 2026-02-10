@@ -10,14 +10,14 @@ Use of this information, code, or scripts provided is at your own risk. Readers 
 
 ## Overview
 
-In addition to the regular method of creating a route to another device via ADS, TwinCAT also provides an in-built ability to create a route by using MQTT.
+In addition to the regular method of creating a route to another device via ADS, TwinCAT also provides an in-built ability to create a route by using ADS over MQTT.
 
 InfoSys provides the following [overview](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17769357707.html&id=4800773352293992935) for ADS over MQTT:
 
-> *Beckhoff ADS (Automation Device Specification) is a communication protocol developed by Beckhoff for efficient data exchange in industrial automation systems. It serves as > the backbone for the integration of devices and software into the PC-based control technology from Beckhoff.
-From the perspective of the ADS protocol, ADS-over-MQTT is an additional transport channel over which ADS can be transported. Decoupling communication via an MQTT message > > broker results in a number of advantages, particularly in terms of scalability and flexibility when integrating additional ADS applications. Security mechanisms such as TLS > can be used at the transport layer to secure the communication connection.
-With ADS-over-MQTT, the entire data exchange is transparent for the ADS applications, because only the ADS router needs to know and hold the corresponding information on the > MQTT transport channel. In particular, this also enables easy retrofitting for existing applications.
-The main use case for ADS-over-MQTT is a classic remote maintenance and remote diagnostics scenario, where the TwinCAT engineering environment (TwinCAT XAE) needs to connect to > one or more controllers for remote debugging. The following diagram illustrates the architecture being created here.*
+> *Beckhoff ADS (Automation Device Specification) is a communication protocol developed by Beckhoff for efficient data exchange in industrial automation systems. It serves as the backbone for the integration of devices and software into the PC-based control technology from Beckhoff.
+From the perspective of the ADS protocol, ADS-over-MQTT is an additional transport channel over which ADS can be transported. Decoupling communication via an MQTT message broker results in a number of advantages, particularly in terms of scalability and flexibility when integrating additional ADS applications. Security mechanisms such as TLS > can be used at the transport layer to secure the communication connection.
+With ADS-over-MQTT, the entire data exchange is transparent for the ADS applications, because only the ADS router needs to know and hold the corresponding information on the MQTT transport channel. In particular, this also enables easy retrofitting for existing applications.
+The main use case for ADS-over-MQTT is a classic remote maintenance and remote diagnostics scenario, where the TwinCAT engineering environment (TwinCAT XAE) needs to connect to one or more controllers for remote debugging. The following diagram illustrates the architecture being created here.*
 
 ## MQTT
 
@@ -31,7 +31,7 @@ This client connects with the broker on one side and subsequently communicates w
 
 Any MQTT broker can be used. A typical installation uses [Mosquitto](https://mosquitto.org/).
 
-The broker can be installed anywhere on a network. This can include via the internet, which allows for a truly distributed solution. If a client can ‘find’ the broker on the network, then it can be used. This is a networking problem to solve, and not a TwinCAT problem.
+The broker can be installed anywhere on a network, including the 'cloud' via the internet. This allows for a truly distributed solution. If a client can ‘find’ the broker on the network, then it can be used. This is a networking problem to solve, and not a TwinCAT problem.
 
 Once a client can connect with the broker, it immediately registers itself by publishing and subscribing to defined topics. These are observable via any other ADS-over-MQTT clients that connect to the broker. Routes are then immediately available for selection from with XAE without the need to use the TwinCAT Route search dialog.
 
@@ -39,7 +39,7 @@ See [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/t
 
 ## Initial configuration – TwinCAT
 
-An important point to note is that ***any existing ‘regular’ ADS routes to the target that is desired to be connected via MQTT must be deleted first.***
+An important point to note is that ***any existing ‘regular’ ADS routes to the target that is desired to be connected via MQTT must be deleted first.*** For example, if an XAE has previously connected to XAR on a controller, then ***the static route information must be deleted on both*** before attempting to forma  route via ADS over MQTT.
 
 Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”*** directory. The “Routes” directory itself may need to be created manually if it does not already exist.
 
