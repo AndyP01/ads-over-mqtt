@@ -39,14 +39,10 @@ Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”**
 
 The ***“%TWINCAT%”*** installation path depends on the build version of TwinCAT being used.
 
-For builds <4026: ***“C:\TwinCAT\”***.
-
-For builds >= 4026: ***“C:\Program Files (x86)\Beckhoff\TwinCAT\”***.
-
 | Build | Path |
 |---|---|
-| <4026 | C:\TwinCAT\ |
-| >=4026 |C:\Program Files (x86)\Beckhoff\TwinCAT\ | 
+| <4026 | C:\TwinCAT\3.1\Target\Routes |
+| >=4026 | C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Routes | 
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
 
