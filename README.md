@@ -25,9 +25,7 @@ MQTT requires the use of a Broker to handle the transmission of messages to regi
 
 Both TwinCAT XAE and XAR installations have the in-built ability to act as an MQTT client - no extra installation is required.
 
-This client connects with the broker on one side and with the ADS router on the other which then connects with the target.
-
-This relationship can be seen in the following diagram:
+This client connects with the broker on one side and subsequently communicates with other clients via the Broker. This relationship can be seen in the following diagram:
 
 ![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.png)
 
