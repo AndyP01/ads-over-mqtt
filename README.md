@@ -10,7 +10,7 @@ Use of this information, code, or scripts provided is at your own risk. Readers 
 
 In addition to the regular method of creating a route to another device via ADS, TwinCAT also provides an in-built ability to create a route by using MQTT.
 
-## InfoSys overview
+## Overview
 
 InfoSys provides the following [overview](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17769357707.html&id=4800773352293992935) for ADS over MQTT:
 
@@ -54,7 +54,7 @@ The ***“%TWINCAT%”*** installation path depends on the build version of Twin
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
 
-It has the following initial basic format, which assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
+The following initial basic format assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
 
 ### mqtt.xml
 ```xml
@@ -80,9 +80,9 @@ This is the topic used by this MQTT connection to communicate with other clients
 <Topic>VirtualAmsNetwork1</Topic>
 ```
 
-Any changes to this file must be activated with restart of the runtime for the changes to come into effect.
+Any changes to this file must be activated with a restart of the runtime for the changes to come into effect.
 
-Any ADS-over-MQTT client that uses ‘VirtualAmsNetwork1’ as the topic name can form a route to each other.
+Any ADS-over-MQTT client that uses ***"VirtualAmsNetwork1"*** as the topic name can form a route to each other.
 
 From InfoSys:
 
@@ -129,7 +129,7 @@ To enable this, the 'Unidirectional' attribute can be added to the mqtt.xml file
 
 Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
 This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
-However, development and support of this plugin has been discontinued, so it is not recommended for future use.
+***However, development and support of this plugin has been discontinued, so it is not recommended for future use.***
 
 Secure TLS connection can be configured requiring the use of certificates and keys.
 
