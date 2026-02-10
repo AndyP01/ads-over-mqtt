@@ -90,6 +90,8 @@ allow_anonymous true
 listener 1883
 ```
 
+<span style="color: red;">EXPAND THIS</span>.
+
 ## Further Configuration
 
 The setup described above allows for an unsecure connection between MQTT clients and the broker.
@@ -115,3 +117,17 @@ To enable this, the following edit can be made to the mqtt.xml file:
 Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
 This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
 However, development and support of this plugin has been discontinued, so it is not recommended for future use.
+
+Secure TLS connection can be configured requiring the use of certificates and keys.
+
+The first step is to configure the broker to use port 8883, which is the default for secure connections.
+
+```
+allow_anonymous false
+listener 8883 nt-baa-vm03
+cafile C:\certs\ca.crt
+certfile C:\Program Files\mosquitto\certs\mosquitto.crt
+keyfile C:\Program Files\mosquitto\certs\mosquitto.key
+require_certificate true
+use_identity_as_username true
+```
