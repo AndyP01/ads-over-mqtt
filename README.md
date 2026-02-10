@@ -29,7 +29,7 @@ The broker can be installed anywhere on a network. This can include via the inte
 
 Once a client can connect with the broker, the target immediately registers itself by publishing and subscribing to defined topics. These are observable via any other ADS-over-MQTT clients that connect to the broker. Routes are then immediately available for selection from with XAE.
 
-From [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17768315019.html&id=8793359276566777531).
+See [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17768315019.html&id=8793359276566777531) here.
 
 ## Initial configuration – TwinCAT
 
@@ -40,6 +40,7 @@ Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”**
 The ***“%TWINCAT%”*** installation path depends on the build version of TwinCAT being used.
 
 For builds <4026: ***“C:\TwinCAT\”***.
+
 For builds >= 4026: ***“C:\Program Files (x86)\Beckhoff\TwinCAT\”***.
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
