@@ -92,7 +92,7 @@ From InfoSys:
 
 Mosquitto uses a configuration file named ***”mosquito.conf”***.
 
-In its most basic form, it has the following format which allows anonymous connections and use the default port 1883 for unsecure conections:
+In its most basic form, it has the following format which allows anonymous connections and configures the broker to listen on port 1883 which is the default for unsecure conections:
 
 ### mosquitto.conf
 ```ini
