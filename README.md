@@ -75,3 +75,5 @@ Any changes to this file must be activated with restart of the runtime for the c
 
 Any ADS-over-MQTT client that uses ‘VirtualAmsNetwork1’ as the topic name can form a route to each other.
 
+From InfoSys:
+![ADS-over-MQTT virtual network](docs/images/ADS-over-MQTT-virtual-network.png)
