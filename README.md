@@ -44,3 +44,16 @@ For builds <4026: ***“C:\TwinCAT\”***.
 For builds >= 4026: ***“C:\Program Files (x86)\Beckhoff\TwinCAT\”***.
 
 This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
+
+It has the following initial basic format:
+```
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
+<RemoteConnections>
+  <Mqtt>
+    <Address Port="1883">127.0.0.1</Address>
+    <Topic>VirtualAmsNetwork1</Topic>
+    </Mqtt>
+  </RemoteConnections>
+</TcConfig>
+```
