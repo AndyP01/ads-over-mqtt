@@ -20,3 +20,5 @@ Both TwinCAT XAE and XAR installations have the in-built ability to act as an MQ
 This client connects with the broker on one side and with the ADS router on the other which then connects with the target.
 
 This relationship can be seen in the following diagram:
+
+![ADS-over-MQTT relationship](docs/images/ADS-over-MQTT-relationship.jpg)
