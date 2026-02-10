@@ -1,7 +1,9 @@
 # Create CA certificate and key.
 
 ## Step 1 - Create a private certificate key for the root CA.
+```
 openssl genrsa -out ca.key 4096
+```
 
 ## Step 2 - Create certificate of the root CA.
 ```
@@ -9,6 +11,7 @@ openssl req -new -x509 -noenc -key ca.key -sha256 -days 3650 -out ca.crt
 ```
 
 ## Step 3 - Add the CA certificate to the trusted root certificates
+TODO What needs to be done here?
 
 
 # Create certificate and key for the server side.
@@ -42,6 +45,7 @@ openssl x509 -req -in mosquitto.csr -CA ca.crt -CAkey ca.key -CAcreateserial -ou
 	
 ## Step 4 - Deploy the certificate.
 Copied mosquitto.key and mosquitto.crt to C:\Program Files\Mosquitto\certs
+
 
 # Create certificate and key for the client side.
 
