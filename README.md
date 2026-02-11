@@ -95,7 +95,7 @@ allow_anonymous true
 listener 1883
 ```
 
-## Further Configuration
+## Further Configuration - TwinCAT
 
 The setup described above allows for an unsecure connection between MQTT clients and the broker.
 
@@ -122,6 +122,8 @@ To enable this, the 'Unidirectional' attribute can be added to the mqtt.xml file
 </TcConfig>
 ```
 
+## Further Configuration - Mosquitto
+
 Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
 This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
 ***However, development and support of this plugin has been discontinued, so it is not recommended for future use.***
@@ -133,7 +135,7 @@ The first step is to configure the broker to use port 8883, which is the default
 ### mosquitto.conf
 ```ini
 allow_anonymous false
-listener 8883 nt-baa-vm03
+listener 8883
 cafile C:\certs\ca.crt
 certfile C:\Program Files\mosquitto\certs\mosquitto.crt
 keyfile C:\Program Files\mosquitto\certs\mosquitto.key
