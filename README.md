@@ -152,12 +152,12 @@ The ***%TWINCAT%\3.1\Target\Certificates\*** directory may need to be manually a
 </TcConfig>
 ```
 
-Configure the broker to use port 8883, which is the default for secure connections.
+Configure the broker to use port 8883 (default for secure connections) and the location of the broker using its IP address or Host name.
 ```xml
 <Address Port="8883">nt-baa-vm03</Address>
 ```
 
-Add the Tls section an point to the directory holding the certificates and key files.
+Add the Tls section and point to the directory holding the certificates and key files.
 ```xml
 <Tls IgnoreCn="false">
   <Ca>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\ca.crt</Ca> 			
@@ -185,6 +185,8 @@ keyfile C:\Program Files\mosquitto\certs\mosquitto.key
 require_certificate true
 use_identity_as_username true
 ```
+
+***listener 8883*** configures the broker to listen on port 8883.
 
 ***'require_certificate true'*** means a client must have a valid Tls certificate to be able to connect to the broker.
 
