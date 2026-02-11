@@ -100,6 +100,9 @@ allow_anonymous true
 listener 1883
 ```
 
+> [!NOTE]
+> Any changes to this file must be activated with a restart of the mosquitto service for the change to come into effect.
+
 ### Further Configuration - TwinCAT
 
 The setup described above allows for an unsecure connection between MQTT clients and the broker.
