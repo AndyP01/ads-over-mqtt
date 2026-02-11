@@ -36,7 +36,9 @@ Once a client can connect with the broker, it immediately registers itself by pu
 
 See [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_ads_over_mqtt/17768315019.html&id=8793359276566777531) here.
 
-## Initial configuration – TwinCAT
+## Configuration
+
+### Initial configuration – TwinCAT
 
 An important point to note: ***Before establishing an ADS-over-MQTT connection, any existing 'regular' ADS routes to the target must be removed.*** For example, if an XAE has previously connected to an XAR on a controller, the static ADS route must be deleted on ***both systems*** before attempting to create the MQTT based route.
 
@@ -53,7 +55,7 @@ This file can have any name but must have an .xml extension. A suggested filenam
 
 The following initial basic format assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
 
-### mqtt.xml
+#### mqtt.xml
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
@@ -85,19 +87,19 @@ From InfoSys:
 
 ![ADS-over-MQTT virtual networks](docs/images/ADS-over-MQTT-virtual-networks.png)
 
-## Initial configuration – Mosquitto
+### Initial configuration – Mosquitto
 
 Mosquitto uses a configuration file named ***”mosquito.conf”***.
 
 In its most basic form, it has the following format which allows anonymous connections and configures the broker to listen on port 1883, which is the default for unsecure conections:
 
-### mosquitto.conf
+#### mosquitto.conf
 ```bash
 allow_anonymous true
 listener 1883
 ```
 
-## Further Configuration - TwinCAT
+### Further Configuration - TwinCAT
 
 The setup described above allows for an unsecure connection between MQTT clients and the broker.
 
@@ -111,7 +113,7 @@ To enable this, the ***'Unidirectional'*** attribute can be added to the mqtt.xm
 <Mqtt Unidirectional="true">
 ```
 
-### mqtt.xml
+#### mqtt.xml
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig"> 
@@ -168,11 +170,11 @@ Set the ***IgnoreCn*** attribute to false to ensure verification of the CommonNa
 <Tls IgnoreCn="false">
 ```
 
-## Further Configuration - Mosquitto
+### Further Configuration - Mosquitto
 
 Secure TLS connection on the server side can be configured requiring the use of certificates and keys.
 
-### mosquitto.conf
+#### mosquitto.conf
 ```bash
 allow_anonymous false
 listener 8883
@@ -187,4 +189,8 @@ use_identity_as_username true
 ***'use_identity_as_username'*** means the CommonName (CN) proprty of the client certificate is used as a user name within Mosquitto.
 In conjunction with ***'allow_anonymous false'*** this means that a user name ***must*** be provided.
 
-Some note on using OpenSsl to generate certificates and keys can be found [here](./docs/openssl.md).
+## OpenSSL
+
+Certificates and keys must be used to facilitate the use of TSL secure connections.
+
+OpenSSL can be used to generate these files. Some notes can be found [here](./docs/openssl.md).
