@@ -137,7 +137,7 @@ To enable this, the ***'Unidirectional'*** attribute can be added to the mqtt.xm
 
 Secure TLS connection on the TwinCAT side can be configured requiring the use of certificates and keys.
 
-The ***%TWINCAT%\3.1\Target\Certificates\*** directory may need to be manually added in the same way as for the 'Routes' directory.
+The ***"%TWINCAT%\3.1\Target\Certificates\"*** directory may need to be manually added in the same way as for the 'Routes' directory.
 
 ```xml
 <?xml version="1.0"?>
@@ -192,7 +192,7 @@ use_identity_as_username true
 
 ***listener 8883*** configures the broker to listen on port 8883.
 
-***'require_certificate true'*** means a client must have a valid Tls certificate to be able to connect to the broker.
+***'require_certificate true'*** means a client must have a valid TLS certificate to be able to connect to the broker.
 
 ***'use_identity_as_username'*** means the CommonName (CN) proprty of the client certificate is used as a user name within Mosquitto.
 
