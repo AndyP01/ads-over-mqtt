@@ -189,7 +189,7 @@ use_identity_as_username true
 
 ***'use_identity_as_username'*** means the CommonName (CN) proprty of the client certificate is used as a user name within Mosquitto.
 
-In conjunction with ***'allow_anonymous false'*** this means that a user name ***must*** be provided.
+In conjunction with ***'allow_anonymous false'*** this means that a user name ***must*** be provided by some means. In this case, via the Common Name property of the certificate.
 
 ## OpenSSL
 
