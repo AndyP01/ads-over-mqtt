@@ -65,6 +65,7 @@ openssl req -new -key mosquitto_client_AndrewPa.key -out mosquitto_client_Andrew
 	
 	Challenge password : <empty>
 	Optional company name : <empty>
+```
 
 ## Step 3 - Sign the certificate
 ```bash
