@@ -41,9 +41,9 @@ See [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/t
 ### Initial configuration – TwinCAT
 
 > [!IMPORTANT]
-> ***Before establishing an ADS-over-MQTT connection, any existing 'regular' ADS routes to the target must be removed.*** For example, if an XAE has previously connected to an XAR on a controller, the static ADS route must be deleted on ***both systems*** before attempting to create the MQTT based route.
+> Before establishing an ADS-over-MQTT connection, any existing 'regular' ADS routes to the target must be removed. For example, if an XAE has previously connected to an XAR on a controller, the static ADS route must be deleted on ***both systems*** before attempting to create the MQTT based route.
 
-Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”*** directory. The “Routes” directory itself may need to be created manually if it does not already exist.
+Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”*** directory. The 'Routes' directory itself may need to be created manually if it does not already exist.
 
 The ***“%TWINCAT%”*** installation path depends on the build version of TwinCAT being used.
 
@@ -52,7 +52,7 @@ The ***“%TWINCAT%”*** installation path depends on the build version of Twin
 | <4026 | C:\TwinCAT\3.1\Target\Routes |
 | >=4026 | C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Routes | 
 
-This file can have any name but must have an .xml extension. A suggested filename is ***“mqtt.xml”***.
+This file can have any name but must have an '.xml' extension. A suggested filename is ***“mqtt.xml”***.
 
 The following initial basic format assumes the broker has been installed locally to the runtime and is being used over an unsecured connection.
 
@@ -69,8 +69,7 @@ The following initial basic format assumes the broker has been installed locally
 </TcConfig>
 ```
 
-Broker located at 127.0.0.1, i.e. local home address.
-Port 1883 is the default port number for unsecured MQTT communications.
+Broker located at 127.0.0.1, i.e. local home address, using port 1883 which is the default port number for unsecured MQTT communications.
 ```xml
 <Address Port=”1883”>127.0.0.1</Address>
 ```
@@ -80,7 +79,8 @@ This is the topic used by this MQTT connection to communicate with other clients
 <Topic>VirtualAmsNetwork1</Topic>
 ```
 
-Any changes to this file must be activated with a restart of the runtime for the changes to come into effect.
+> [!NOTE]
+> Any changes to this file must be activated with a restart of the runtime for the changes to come into effect.
 
 Any ADS-over-MQTT client that uses ***"VirtualAmsNetwork1"*** as the topic name can form a route to each other.
 
