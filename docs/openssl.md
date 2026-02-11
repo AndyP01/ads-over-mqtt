@@ -73,4 +73,4 @@ openssl x509 -req -in mosquitto_client_AndrewPa.csr -CA ca.crt -CAkey ca.key -CA
 ```
 
 ## Step 4 - Deploy the certificate
-Copied to directory on client side and pointed client (e.g. MQTTX app) to look at them.
+Copied to directory on client side and pointed client (e.g. MQTTX app or XAE/XAR) to look at them.
