@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This guide is a personal project and not a peer-reviewed publication or sponsored document. It is provided “as is,” without any warranties—express or implied—including, but not limited to, accuracy, completeness, reliability, or suitability for any purpose. The author(s) shall not be held liable for any errors, omissions, delays, or damages arising from the use or display of this information.
+This guide is a personal project and not a peer-reviewed publication or sponsored document. It is provided “as is”, without any warranties — express or implied — including, but not limited to, accuracy, completeness, reliability, or suitability for any purpose. The author(s) shall not be held liable for any errors, omissions, delays, or damages arising from the use or display of this information.
 
 All opinions expressed are solely those of the author(s) and do not necessarily represent those of any organization, employer, or other entity. Any assumptions or conclusions presented are subject to revision or rethinking at any time.
 
@@ -87,7 +87,7 @@ From InfoSys:
 
 Mosquitto uses a configuration file named ***”mosquito.conf”***.
 
-In its most basic form, it has the following format which allows anonymous connections and configures the broker to listen on port 1883 which is the default for unsecure conections:
+In its most basic form, it has the following format which allows anonymous connections and configures the broker to listen on port 1883, which is the default for unsecure conections:
 
 ### mosquitto.conf
 ```ini
@@ -99,11 +99,11 @@ listener 1883
 
 The setup described above allows for an unsecure connection between MQTT clients and the broker.
 
-Further configuration of both TwinCAT and the broker can be made to enable a more secure connection.
+Further configuration of both TwinCAT and the broker can be made to enable more secure connections.
 
-The ADS route can be made unidirectional. This may be an important consideration for ‘engineering’ clients, such as using an XAE on a laptop. This allows only ADS commands to be made to a target from XAE but will not allow commands in the reverse direction from the target to XAE.
+The ADS route can be made unidirectional. This may be an important consideration for ‘engineering’ clients, such as using an XAE on a laptop. This allows only ADS commands to be made to a target from XAE but will not allow commands in the reverse direction from the target to XAE. This setting is directly analogous the the 'Unidirectional' setting on the regular Route search dialog box.
 
-To enable this, the 'Unidirectional' attribute can be added to the mqtt.xml file:
+To enable this, the ***'Unidirectional'*** attribute can be added to the mqtt.xml file:
 
 ```xml
 <Mqtt Unidirectional="true">
@@ -122,15 +122,53 @@ To enable this, the 'Unidirectional' attribute can be added to the mqtt.xml file
 </TcConfig>
 ```
 
-## Further Configuration - Mosquitto
-
 Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
 This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
 ***However, development and support of this plugin has been discontinued, so it is not recommended for future use.***
 
-Secure TLS connection can be configured requiring the use of certificates and keys.
+Secure TLS connection on the TwinCAT side can be configured requiring the use of certificates and keys.
 
-The first step is to configure the broker to use port 8883, which is the default for secure connections.
+The ***%TWINCAT%\3.1\Target\Certificates\*** directory may need to be manually added in the same way as for the 'Routes' directory.
+
+```
+<?xml version="1.0"?>
+<TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig">
+	<RemoteConnections>
+		<Mqtt Unidirectional="true">
+			<Address Port="8883">nt-baa-vm03</Address>
+			<Topic>VirtualAmsNetwork1</Topic>
+			<Tls IgnoreCn="false">
+				<Ca>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\ca.crt</Ca> 			
+          <Cert>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\mosquitto_client_VM-XAE.crt</Cert> 
+          <Key>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\mosquitto_client_VM-XAE.key</Key>
+      </Tls> 
+		</Mqtt>
+	</RemoteConnections>
+</TcConfig>
+```
+
+Configure the broker to use port 8883, which is the default for secure connections.
+```
+<Address Port="8883">nt-baa-vm03</Address>
+```
+
+Add the Tls section an point to the directory holding the certificates and key files.
+```
+<Tls IgnoreCn="false">
+  <Ca>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\ca.crt</Ca> 			
+  <Cert>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\mosquitto_client_VM-XAE.crt</Cert> 
+  <Key>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\mosquitto_client_VM-XAE.key</Key>
+</Tls>
+```
+
+Set the ***IgnoreCn*** attribute to false to ensure verification of the CommonName (CN) proprty of the server certificate.
+```
+<Tls IgnoreCn="false">
+```
+
+## Further Configuration - Mosquitto
+
+Secure TLS connection on the server side can be configured requiring the use of certificates and keys.
 
 ### mosquitto.conf
 ```ini
@@ -142,3 +180,7 @@ keyfile C:\Program Files\mosquitto\certs\mosquitto.key
 require_certificate true
 use_identity_as_username true
 ```
+
+***'require_certificate true'*** means a client must have a valid Tls certificate to be able to connect to the broker.
+***'use_identity_as_username'*** means the CommonName (CN) proprty of the client certificate is used as a user name within Mosquitto.
+In conjunction with ***'allow_anonymous false'*** this means that a user name ***must*** be provided.
