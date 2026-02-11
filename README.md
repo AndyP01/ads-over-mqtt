@@ -184,3 +184,5 @@ use_identity_as_username true
 ***'require_certificate true'*** means a client must have a valid Tls certificate to be able to connect to the broker.
 ***'use_identity_as_username'*** means the CommonName (CN) proprty of the client certificate is used as a user name within Mosquitto.
 In conjunction with ***'allow_anonymous false'*** this means that a user name ***must*** be provided.
+
+Some note on using OpenSsl to generate certificates and keys can be found [here](\docs\Openssl.md).
