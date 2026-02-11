@@ -90,7 +90,7 @@ Mosquitto uses a configuration file named ***”mosquito.conf”***.
 In its most basic form, it has the following format which allows anonymous connections and configures the broker to listen on port 1883, which is the default for unsecure conections:
 
 ### mosquitto.conf
-```ini
+```bash
 allow_anonymous true
 listener 1883
 ```
@@ -130,7 +130,7 @@ Secure TLS connection on the TwinCAT side can be configured requiring the use of
 
 The ***%TWINCAT%\3.1\Target\Certificates\*** directory may need to be manually added in the same way as for the 'Routes' directory.
 
-```
+```xml
 <?xml version="1.0"?>
 <TcConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2015/12/TcConfig">
 	<RemoteConnections>
@@ -148,12 +148,12 @@ The ***%TWINCAT%\3.1\Target\Certificates\*** directory may need to be manually a
 ```
 
 Configure the broker to use port 8883, which is the default for secure connections.
-```
+```xml
 <Address Port="8883">nt-baa-vm03</Address>
 ```
 
 Add the Tls section an point to the directory holding the certificates and key files.
-```
+```xml
 <Tls IgnoreCn="false">
   <Ca>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\ca.crt</Ca> 			
   <Cert>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Target\Certificates\mosquitto_client_VM-XAE.crt</Cert> 
@@ -162,7 +162,7 @@ Add the Tls section an point to the directory holding the certificates and key f
 ```
 
 Set the ***IgnoreCn*** attribute to false to ensure verification of the CommonName (CN) proprty of the server certificate.
-```
+```xml
 <Tls IgnoreCn="false">
 ```
 
@@ -171,7 +171,7 @@ Set the ***IgnoreCn*** attribute to false to ensure verification of the CommonNa
 Secure TLS connection on the server side can be configured requiring the use of certificates and keys.
 
 ### mosquitto.conf
-```ini
+```bash
 allow_anonymous false
 listener 8883
 cafile C:\certs\ca.crt
