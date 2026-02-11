@@ -130,9 +130,10 @@ To enable this, the ***'Unidirectional'*** attribute can be added to the mqtt.xm
 </TcConfig>
 ```
 
-Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
-This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
-***However, development and support of this plugin has been discontinued, so it is not recommended for future use.***
+> [!NOTE]
+> Beckhoff also provide a plugin for Mosquitto named ***“TcMqttPlugin.dll”***.
+> This was developed to enable the definition of access rights between the individual TwinCAT ADS routers.
+> ***However, development and support of this plugin has been discontinued, so it is not recommended for future use.***
 
 Secure TLS connection on the TwinCAT side can be configured requiring the use of certificates and keys.
 
