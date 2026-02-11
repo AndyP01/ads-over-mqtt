@@ -36,7 +36,7 @@ See [InfoSys](https://infosys.beckhoff.com/english.php?content=../content/1033/t
 
 ## Initial configuration – TwinCAT
 
-An important point to note is that ***any existing ‘regular’ ADS routes to the target that is desired to be connected via MQTT must be deleted first.*** For example, if an XAE has previously connected to XAR on a controller, then ***the static route information must be deleted on both*** before attempting to forma  route via ADS over MQTT.
+An important point to note: ***Before establishing an ADS-over-MQTT connection, any existing 'regular' ADS routes to the target must be removed.*** For example, if an XAE has previously connected to an XAR on a controller, the static ADS route must be deleted on ***both systems*** before attempting to create the MQTT based route.
 
 Next, an XML file must be created in the ***“%TWINCAT%\3.1\Target\Routes\”*** directory. The “Routes” directory itself may need to be created manually if it does not already exist.
 
