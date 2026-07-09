@@ -17,8 +17,8 @@ jobs:
         with:
           input_path: ./README.md
           output_dir: pdfs
-          images_dir: docs/images
-          image_import: ./images
+          images_dir: ./docs/images
+          image_import: docs/images
           build_html: false
 
       - name: Upload PDF Artifacts
