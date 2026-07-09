@@ -4,25 +4,5 @@ on:
   workflow_dispatch:
 
 jobs:
-  convert-docs:
-    name: Build and Upload PDF
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Convert Markdown to PDF
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: ./README.md
-          output_dir: pdfs
-          images_dir: ./docs/images
-          image_import: docs/images
-          build_html: false
-
-      - name: Upload PDF Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ads-over-mqtt
-          path: pdfs
+  call-convert-docs:
+    uses: AndyP01/shared-workflows/.github/workflows/markdown-to-pdf.yml@v1
