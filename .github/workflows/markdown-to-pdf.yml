@@ -5,4 +5,4 @@ on:
 
 jobs:
   call-convert-docs:
-    uses: AndyP01/shared-workflows/.github/workflows/markdown-to-pdf.yml@v1
+    uses: AndyP01/shared-workflows/.github/workflows/markdown-to-pdf.yml@main
