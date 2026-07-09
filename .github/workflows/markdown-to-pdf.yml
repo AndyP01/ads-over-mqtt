@@ -1,0 +1,28 @@
+name: Convert Markdown to PDF
+
+on:
+  workflow_despatch:
+
+jobs:
+  convert-docs:
+    name: Build and Upload PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Convert Markdown to PDF
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: docs
+          output_dir: pdf-output
+          images_dir: docs/images
+          image_import: ./images
+          build_html: false
+
+      - name: Upload PDF Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: converted-pdfs
+          path: pdf-output/
