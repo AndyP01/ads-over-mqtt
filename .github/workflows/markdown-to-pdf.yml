@@ -1,7 +1,7 @@
 name: Convert Markdown to PDF
 
 on:
-  workflow_despatch:
+  workflow_dispatch:
 
 jobs:
   convert-docs:
